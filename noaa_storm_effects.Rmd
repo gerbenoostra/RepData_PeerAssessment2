@@ -1,0 +1,21 @@
+---
+output:
+  html_document:
+    keep_md: yes
+---
+# Effects of storm data
+
+
+````{r, echo=F}
+  library(plyr)
+  library(lattice)
+  library(RCurl)
+```
+
+````{r, download-data}
+temp="noaastormdata.csv.bz2"
+if (!file.exists(temp)) {
+    download.file("https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2", destfile=temp)
+  }
+data<- read.csv2(unz(temp, "noastormdata.csv"))
+````
